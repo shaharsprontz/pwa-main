@@ -23,14 +23,11 @@ if ('serviceWorker' in navigator) {
 
 let deferredPrompt;
 const addBtn = document.querySelector('.add-button');
-// addBtn.style.display = 'none';
+addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
-  var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-  if (parseInt(raw[2]) <= 67 ){
   e.preventDefault();
-  }else{
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
   // Update UI to notify the user they can add to home screen
@@ -49,8 +46,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
         console.log('User dismissed the A2HS prompt');
       }
       deferredPrompt = null;
-    
     });
   });
-}
 });
